@@ -1,3 +1,8 @@
 {
-  "editor.tabSize": 2
+  "editor.tabSize": 2,
+  "html.completion.attributeDefaultValue": "singlequotes",
+  "prettier.jsxSingleQuote": true,
+  "prettier.singleQuote": true,
+  "javascript.preferences.quoteStyle": "single",
+  "typescript.preferences.quoteStyle": "single"
 }
