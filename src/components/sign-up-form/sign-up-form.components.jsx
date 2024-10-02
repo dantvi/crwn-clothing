@@ -1,17 +1,19 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import FormInput from "../form-input/form-input.component";
+import FormInput from '../form-input/form-input.component';
 
 import {
-  createAuthUserWithEmailAndPassword,
+	createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
-} from "../../utils/firebase/firebase.utils";
+} from '../../utils/firebase/firebase.utils';
+
+import './sign-up-form.styles.scss';
 
 const defaultFormFields = {
-  displayName: "",
-  email: "",
-  password: "",
-  confirmPassword: "",
+  displayName: '',
+  email: '',
+  password: '',
+  confirmPassword: '',
 };
 
 const SignUpForm = () => {
@@ -28,7 +30,7 @@ const SignUpForm = () => {
     event.preventDefault();
 
     if (password !== confirmPassword) {
-      alert("Passwords do not match");
+      alert('Passwords do not match');
       return;
     }
 
@@ -40,10 +42,10 @@ const SignUpForm = () => {
       await createUserDocumentFromAuth(user, { displayName });
       resetFormFields();
     } catch (error) {
-      if (error.code === "auth/email-already-in-use") {
-        alert("Cannot create user, email already in use");
+      if (error.code === 'auth/email-already-in-use') {
+        alert('Cannot create user, email already in use');
       } else {
-        console.log("user creation encountered an error", error);
+        console.log('user creation encountered an error', error);
       }
     }
   };
@@ -55,8 +57,9 @@ const SignUpForm = () => {
   };
 
   return (
-    <div>
-      <h1>Sign up with your email and password</h1>
+    <div className="sign-up-container">
+			<h2>Don't have an account?</h2>
+      <span>Sign up with your email and password</span>
       <form onSubmit={handleSubmit}>
         <FormInput
           label="Display Name"
